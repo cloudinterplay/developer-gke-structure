@@ -6,6 +6,14 @@ variable "gcp" {
     region     = string
   })
 }
+# VPC
+variable "vpc" {
+  description = "The GCP VPC parameters"
+  type = object({
+    network    = string
+    subnetwork = string
+  })
+}
 # GKE
 variable "gke" {
   type        = any
