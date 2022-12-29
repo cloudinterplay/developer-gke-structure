@@ -2,17 +2,17 @@ module "gke" {
   depends_on = [
     google_compute_subnetwork.subnetwork
   ]
-  source                   = "../../../tf-modules-gcp/terraform-gcp-gke-cluster/modules/cluster"
-  name                     = var.gke.name
-  description              = var.gke.description
-  project                  = var.gcp.project_id
-  location                 = var.gke.location
-  cluster_autoscaling      = var.gke.cluster_autoscaling
-  ip_allocation_policy     = var.gke.ip_allocation_policy
-  network                  = google_compute_network.vpc_network.id
-  subnetwork               = google_compute_subnetwork.subnetwork.id
-  private_cluster_config   = var.gke.private_cluster_config
-  initial_node_count       = var.gke.initial_node_count
+  source      = "../../../tf-modules-gcp/terraform-gcp-gke-cluster/modules/cluster"
+  name        = var.gke.name
+  description = var.gke.description
+  project     = var.gcp.project_id
+  location    = var.gke.location
+  # cluster_autoscaling      = var.gke.cluster_autoscaling
+  ip_allocation_policy   = var.gke.ip_allocation_policy
+  network                = google_compute_network.vpc_network.id
+  subnetwork             = google_compute_subnetwork.subnetwork.id
+  private_cluster_config = var.gke.private_cluster_config
+  initial_node_count     = var.gke.initial_node_count
 
   node_pools = var.gke.node_pools
 
@@ -29,14 +29,6 @@ module "gke" {
       default-node-pool = true
     }
   }
-
-  # node_pools_metadata = {
-  #   all = {}
-
-  #   default-node-pool = {
-  #     node-pool-metadata-custom-value = "my-node-pool"
-  #   }
-  # }
 
   node_pools_taints = {
     all = []
