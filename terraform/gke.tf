@@ -6,7 +6,6 @@ module "gke" {
   project     = var.gcp.project_id
   cluster     = var.gke.cluster
   node_pools  = var.gke.node_pools
-  ip_allocation_policy     = var.gke.ip_allocation_policy
   network                  = google_compute_network.vpc_network.id
   subnetwork               = google_compute_subnetwork.subnetwork.id
   private_cluster_config   = var.gke.private_cluster_config
