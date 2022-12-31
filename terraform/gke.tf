@@ -3,18 +3,13 @@ module "gke" {
     google_compute_subnetwork.subnetwork
   ]
   source      = "../../../tf-modules-gcp/terraform-gcp-gke-cluster/modules/cluster"
-  name        = var.gke.name
-  description = var.gke.description
   project     = var.gcp.project_id
-  location    = var.gke.location
-  # cluster_autoscaling      = var.gke.cluster_autoscaling
-  ip_allocation_policy   = var.gke.ip_allocation_policy
-  network                = google_compute_network.vpc_network.id
-  subnetwork             = google_compute_subnetwork.subnetwork.id
-  private_cluster_config = var.gke.private_cluster_config
-  initial_node_count     = var.gke.initial_node_count
-
-  node_pools = var.gke.node_pools
+  cluster     = var.gke.cluster
+  node_pools  = var.gke.node_pools
+  ip_allocation_policy     = var.gke.ip_allocation_policy
+  network                  = google_compute_network.vpc_network.id
+  subnetwork               = google_compute_subnetwork.subnetwork.id
+  private_cluster_config   = var.gke.private_cluster_config
 
   node_pools_oauth_scopes = {
     all = [
