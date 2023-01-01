@@ -10,6 +10,10 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = "~> 2.14"
     }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "2.8.0"
+    }
   }
   backend "gcs" {}
 }
