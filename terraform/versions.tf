@@ -4,11 +4,15 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = ">= 4.36.0, < 5.0"
+      version = "4.47"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
       version = "~> 2.14"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "2.8.0"
     }
   }
   backend "gcs" {}
