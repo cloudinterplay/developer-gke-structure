@@ -34,3 +34,23 @@ variable "argocd" {
     })
   })
 }
+variable "ingress_nginx_external" {
+  type = object({
+    namespace : string
+    chart : object({
+      repository : string,
+      version : string
+      values_files : list(string)
+    })
+  })
+}
+variable "external_dns" {
+  type = object({
+    namespace : string
+    chart : object({
+      repository : string,
+      version : string
+      values_files : list(string)
+    })
+  })
+}

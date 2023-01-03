@@ -2,7 +2,7 @@ module "gke" {
   depends_on = [
     google_compute_subnetwork.subnetwork
   ]
-  source  = "../../../tf-modules-gcp/terraform-gcp-gke-cluster/modules/cluster"
+  source = "../../../tf-modules-gcp/terraform-gcp-gke-cluster/modules/cluster"
   cluster = merge(
     {
       project    = var.gcp.project_id,
