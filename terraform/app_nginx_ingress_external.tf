@@ -1,4 +1,7 @@
 resource "kubernetes_namespace" "ingress_nginx" {
+  depends_on = [
+    module.gke
+  ]
   metadata {
     annotations = {
       name = var.ingress_nginx_external.namespace
