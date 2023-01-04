@@ -54,3 +54,23 @@ variable "external_dns" {
     })
   })
 }
+variable "cert_manager" {
+  type = object({
+    namespace : string
+    chart : object({
+      repository : string,
+      version : string
+      values_files : list(string)
+    })
+  })
+}
+variable "clusterIssuers" {
+  description = "clusterIssuers"
+  # Map key is the clusterIssueName
+  type = map(object({
+    acmeServer              = string
+    privateKeySecretRefName = string
+    dnsZone                 = string
+    project                 = string
+  }))
+}
